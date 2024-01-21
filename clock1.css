@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #82b3c9; /* Subtle dark blue background */
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.5s ease; /* Smooth transition effect */
+}
+
+.container {
+    width: 550px;
+    height: 450px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h2 {
+    font-weight: 700;
+    color: #1976d2; /* Rich blue text */
+    font-size: 32px;
+}
+
+#startQuote,
+#stopQuote {
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 15px 20px;
+    font-size: 24px;
+    font-family: 'Georgia', serif;
+    color: #424242; /* Dark grayish text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth button hover effect */
+}
+
+#startQuote:hover,
+#stopQuote:hover {
+    background-color: #1976d2; /* Hover background color */
+    color: #fff; /* Hover text color */
+}
+
+.main-content {
+    width: 100%;
+    height: 300px;
+    padding: 40px;
+    background-color: #ffffff; /* White background */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.text-area {
+    text-align: justify;
+    font-size: 18px;
+    color: #616161; /* Light gray text */
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+#startQuote::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+#startQuote:hover::after {
+    animation: pulsate 1s infinite; /* Start pulsating on hover */
+}
+
+@keyframes pulsate {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            font-family: "Segoe UI", sans-serif;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        h3 {
+            font-size: 20px;
+            text-align: center;
+            font-family: 'Brush Script MT', cursive;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #clock {
+            font-size: 48px;
+            text-align: center;
+            margin-top: 20px;
+            font-family: "Segoe UI", sans-serif;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        #time {
+            font-size: 90px;
+        }
+
+        #date {
+            font-size: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <h3>BY AKMAL</h3>
+    <div id="clock"></div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        const clockElement = document.getElementById('clock');
+        let intervalId;
+
+        function updateClock() {
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+            const day = currentTime.getDate();
+            const month = currentTime.getMonth() + 1;
+            const year = currentTime.getFullYear();
+
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+
+            clockElement.innerHTML = `<div id="time">${formattedTime}</div><div id="date">${formattedDate}</div>`;
+        }
+
+        function startClock() {
+            updateClock();
+            intervalId = setInterval(updateClock, 1000);
+        }
+
+        function stopClock() {
+            clearInterval(intervalId);
+        }
+
+        document.getElementById('start').addEventListener('click', startClock);
+        document.getElementById('stop').addEventListener('click', stopClock);
+    </script>
+</body>
+</html>
+
+
+
+
